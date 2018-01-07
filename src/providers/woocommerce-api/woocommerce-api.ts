@@ -14,7 +14,7 @@ export class WoocommerceApiProvider {
     // this.wooCommerce = WC(environment.wooCommerce);
   }
 
-  get2<T>(url: string): Observable<T> {
+  // get2<T>(url: string): Observable<T> {
     // const subject = new Subject<T>();
 
     // this.wooCommerce.getAsync(url).then(result => {
@@ -22,14 +22,14 @@ export class WoocommerceApiProvider {
     // });
 
     // return subject.asObservable();
-  }
+  // }
 
-  get<T>(url: string): Promise<T[]> {
+  // get<T>(url: string): Promise<T[]> {
     // const data =  this.wooCommerce.getAsync(url).then(result => {
     //   return JSON.parse(result.toJSON().body);
     // });
 
     // return Promise.resolve(data);
-  }
+  // }
 
 }
