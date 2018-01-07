@@ -25,11 +25,11 @@ export class WoocommerceApiProvider {
   // }
 
   // get<T>(url: string): Promise<T[]> {
-    // const data =  this.wooCommerce.getAsync(url).then(result => {
-    //   return JSON.parse(result.toJSON().body);
-    // });
+  //   const data =  this.wooCommerce.getAsync(url).then(result => {
+  //     return JSON.parse(result.toJSON().body);
+  //   });
 
-    // return Promise.resolve(data);
+  //   return Promise.resolve(data);
   // }
 
 }
