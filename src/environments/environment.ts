@@ -11,5 +11,8 @@ export const environment = {
     consumerSecret: 'cs_25e423d7f9fe6d1506b3d37c98cc6f7ac83782d8',
     wpAPI: true,
     version: 'wc/v1'
+  },
+  heroku: {
+    url: 'https://wooionic-api.herokuapp.com/api/'
   }
 };

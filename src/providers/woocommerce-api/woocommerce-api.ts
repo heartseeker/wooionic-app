@@ -11,25 +11,25 @@ export class WoocommerceApiProvider {
   wooCommerce;
 
   constructor() {
-    this.wooCommerce = WC(environment.wooCommerce);
+    // this.wooCommerce = WC(environment.wooCommerce);
   }
 
   get2<T>(url: string): Observable<T> {
-    const subject = new Subject<T>();
+    // const subject = new Subject<T>();
 
-    this.wooCommerce.getAsync(url).then(result => {
-      subject.next(JSON.parse(result.toJSON().body));
-    });
+    // this.wooCommerce.getAsync(url).then(result => {
+    //   subject.next(JSON.parse(result.toJSON().body));
+    // });
 
-    return subject.asObservable();
+    // return subject.asObservable();
   }
 
   get<T>(url: string): Promise<T[]> {
-    const data =  this.wooCommerce.getAsync(url).then(result => {
-      return JSON.parse(result.toJSON().body);
-    });
+    // const data =  this.wooCommerce.getAsync(url).then(result => {
+    //   return JSON.parse(result.toJSON().body);
+    // });
 
-    return Promise.resolve(data);
+    // return Promise.resolve(data);
   }
 
 }
