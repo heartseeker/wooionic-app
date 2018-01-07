@@ -1,19 +1,24 @@
+import { StriphtmlPipe } from './../pipes/striphtml/striphtml';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
+import { MenuPage } from '../pages/menu/menu';
+
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { WoocommerceApiProvider } from '../providers/woocommerce-api/woocommerce-api';
+
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    ListPage
+    MenuPage,
+    StriphtmlPipe
   ],
   imports: [
     BrowserModule,
@@ -23,12 +28,13 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   entryComponents: [
     MyApp,
     HomePage,
-    ListPage
+    MenuPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    WoocommerceApiProvider
   ]
 })
 export class AppModule {}
