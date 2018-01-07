@@ -1,3 +1,4 @@
+import { HerokuApiProvider } from './../../providers/heroku-api/heroku-api';
 import { Component, OnInit } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { HomePage } from '../home/home';
@@ -17,15 +18,25 @@ export class MenuPage implements OnInit{
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
-    public http: WoocommerceApiProvider
+    public http: WoocommerceApiProvider,
+    public heroku: HerokuApiProvider
   ) {
     this.homePage = HomePage;
   }
 
   ngOnInit() {
-    this.http.get('products/categories').then(res => {
-      this.categories = res;
-      console.log('categories', res);
+    // WoocommerceApiProvider
+    //=============================================================
+    // this.http.get('products/categories').then(res => {
+    //   this.categories = res;
+    //   console.log('categories', res);
+    // });
+
+    // heroku api
+    //=============================================================
+    this.heroku.get('products/categories').subscribe(categories => {
+      this.categories = categories;
+      console.log('categories', categories);
     });
   }
 
