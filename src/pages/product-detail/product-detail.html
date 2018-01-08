@@ -1,19 +1,21 @@
 <ion-header>
 
   <ion-navbar>
+      
     <ion-title>{{ product.name }}</ion-title>
+
+    <ion-buttons right top edge (click)="openCart()">
+      <button ion-button menuToggle>
+        <ion-icon name="cart"></ion-icon>
+        <ion-badge color="danger">{{ cartQty }}</ion-badge>
+      </button>
+    </ion-buttons>
+
   </ion-navbar>
 
 </ion-header>
 
-
 <ion-content>
-
-  <ion-fab right top edge click (click)="openCart()">
-    <button ion-fab>
-      <ion-icon name="cart"></ion-icon>
-    </button>
-  </ion-fab>
 
   <ion-card padding>
     <ion-slides loop="true" autoplay="3000" pager>
@@ -24,8 +26,8 @@
 
     <ion-card-content>
       <ion-card-title>
-        {{ product.name }} <br/>
-        <ion-chip *ngFor="let cat of product.categories">
+        <h1>{{ product.name }}</h1>
+        <ion-chip *ngFor="let cat of product.categories" style="margin-right: 5px">
           <ion-label>{{ cat.name }}</ion-label>
         </ion-chip>
       </ion-card-title>
@@ -34,9 +36,9 @@
     <p>
       {{ product.description | striphtml }}
     </p>
-
-    <button ion-button icon-left block outline>
-      <ion-icon name="basket"></ion-icon> Add to Cart for &#8369; {{ product.price }}
+    <br/>
+    <button ion-button icon-left block outline (click)="addToCart(product)">
+      <ion-icon name="basket"></ion-icon> Add to Cart for &#8369; {{ +product.price | number }}
     </button>
 
   </ion-card>

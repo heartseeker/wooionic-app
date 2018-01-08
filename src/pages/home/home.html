@@ -1,8 +1,19 @@
 <ion-header>
   <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
+    
+    <ion-buttons start>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+
+    <ion-buttons end>
+      <button ion-button>
+        <ion-icon class="cart-icon" name="cart"></ion-icon>
+        <ion-badge color="danger">{{ cartQty }}</ion-badge>
+      </button>
+    </ion-buttons>
+
     <ion-title>Home</ion-title>
   </ion-navbar>
 </ion-header>
@@ -11,7 +22,7 @@
 
   <ion-card>
     <ion-slides *ngIf="featuredProducts.length > 0" loop="true" autoplay="3000" pager>
-      <ion-slide *ngFor="let product of featuredProducts">
+      <ion-slide *ngFor="let product of featuredProducts" (click)="goToProductDetail(product)">
         <img [src]="product.images[0].src">
       </ion-slide>
     </ion-slides>
@@ -21,7 +32,7 @@
 
   <ion-card>
     <ion-slides *ngIf="foneProducts.length > 0" loop="true" autoplay="3000" pager>
-        <ion-slide *ngFor="let product of foneProducts">
+        <ion-slide *ngFor="let product of foneProducts" (click)="goToProductDetail(product)">
           <img [src]="product.images[0].src">
           <ion-card-content>
             <ion-card-title>

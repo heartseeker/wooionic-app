@@ -19,7 +19,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { MainPipeModule } from './main-pipe.module';
 import { ProductDetailPage } from '../pages/product-detail/product-detail';
 import { CartPage } from '../pages/cart/cart';
-
+import { IonicStorageModule } from '@ionic/storage';
+import { StorageProvider } from '../providers/storage/storage';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { CartPage } from '../pages/cart/cart';
     HttpClientModule,
     MainPipeModule,
     IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot(),
     ComponentsModule
   ],
   bootstrap: [IonicApp],
@@ -52,7 +54,8 @@ import { CartPage } from '../pages/cart/cart';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     WoocommerceApiProvider,
-    HerokuApiProvider
+    HerokuApiProvider,
+    StorageProvider
   ]
 })
 export class AppModule {}

@@ -1,9 +1,16 @@
 <ion-header>
   <ion-navbar>
-
+    
     <ion-buttons start>
-      <button ion-button icon menuToggle>
+      <button ion-button menuToggle>
         <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+    
+    <ion-buttons end>
+      <button ion-button menuToggle>
+        <ion-icon name="cart"></ion-icon>
+        <ion-badge color="danger">{{ cartQty }}</ion-badge>
       </button>
     </ion-buttons>
 

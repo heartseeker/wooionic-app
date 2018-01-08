@@ -2,6 +2,10 @@ import { HerokuApiProvider } from './../../providers/heroku-api/heroku-api';
 import { Component, OnInit } from '@angular/core';
 import { NavController, ToastController } from 'ionic-angular';
 import { WoocommerceApiProvider } from '../../providers/woocommerce-api/woocommerce-api';
+import { ProductDetailPage } from '../product-detail/product-detail';
+import { ModalController } from 'ionic-angular/components/modal/modal-controller';
+import { CartPage } from '../cart/cart';
+import { StorageProvider } from '../../providers/storage/storage';
 
 
 @Component({
@@ -17,13 +21,23 @@ export class HomePage implements OnInit{
   allProducts = [];
 
   page: number = 1;
+
+  cartQty: any = 0;
   
   constructor(
     private navCtrl: NavController,
     private http: WoocommerceApiProvider,
     private toastCtrl: ToastController,
-    private heroku: HerokuApiProvider
+    private heroku: HerokuApiProvider,
+    private modalCtrl: ModalController,
+    private storageProvider: StorageProvider
   ) {}
+
+  ionViewWillEnter() {
+    this.storageProvider.getCartQty().subscribe(qty => {
+      this.cartQty = qty;
+    });
+  }
 
   ngOnInit() {
     // wooionic directly
@@ -51,6 +65,9 @@ export class HomePage implements OnInit{
       this.foneProducts = products;
     });
 
+    this.storageProvider.getCartQty().subscribe(qty => {
+      this.cartQty = qty;
+    });
   }
 
   loadProducts(event) {
@@ -86,4 +103,13 @@ export class HomePage implements OnInit{
 
 
   }
+
+  goToProductDetail(product) {
+    this.navCtrl.push(ProductDetailPage, { product });
+  }
+
+  openCart() {
+    this.modalCtrl.create(CartPage).present();
+  }
+
 }

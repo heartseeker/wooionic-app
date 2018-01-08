@@ -8,7 +8,7 @@
     <p>
       <span>{{ (product.description.length > 40 )? (product.description | striphtml | slice:0:40)+'...':(product.description) }}</span>
     </p>
-    <h4>&#8369; {{ product.price }}</h4>
+    <h4>&#8369; {{ +product.price | number }}</h4>
 
     <button ion-button icon clear item-right>
       <ion-icon name="arrow-forward"></ion-icon>
