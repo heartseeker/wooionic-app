@@ -35,7 +35,29 @@ export class MenuPage implements OnInit{
     // heroku api
     //=============================================================
     this.heroku.get('products/categories').subscribe(categories => {
-      this.categories = categories;
+      
+      const promise = categories.map((category, index) => {
+        switch (category.slug) {
+          case 'technology':
+            categories[index]['icon'] = 'md-bulb';
+            break;
+
+          case 'featured':
+            categories[index]['icon'] = 'md-camera';
+            break;
+
+          case 'cellfones':
+            categories[index]['icon'] = 'ios-phone-portrait';
+            break;
+          
+        }
+
+      });
+
+      Promise.all(promise).then(() => {
+        this.categories = categories;
+      });
+
       console.log('categories', categories);
     });
   }
