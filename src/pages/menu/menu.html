@@ -7,7 +7,11 @@
 
   <ion-content>
     <ion-list>
-      <ion-item *ngFor="let category of categories">
+      <ion-item (click)="goToHome()" menuClose>
+        <ion-icon name="md-home" item-left large></ion-icon>
+        <h2>Home</h2>
+      </ion-item>
+      <ion-item *ngFor="let category of categories" (click)="goToCategory(category)" menuClose>
         <ion-icon *ngIf="category.icon" [name]="category.icon" item-left large></ion-icon>
         <h2>{{ category.name }}</h2>
         <p>{{ category.description }}</p>

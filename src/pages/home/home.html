@@ -35,8 +35,8 @@
   </ion-card>
 
   <hr>
-
-  <ion-list *ngIf="allProducts.length > 0">
+  <product-list [products]="allProducts"></product-list>
+  <!-- <ion-list *ngIf="allProducts.length > 0">
     <ion-item *ngFor="let product of allProducts" text-wrap>
       <ion-thumbnail item-left>
         <img [src]="product.images[0].src">
@@ -57,6 +57,6 @@
 
   <ion-infinite-scroll (ionInfinite)="loadProducts($event)">
     <ion-infinite-scroll-content></ion-infinite-scroll-content>
-  </ion-infinite-scroll>
+  </ion-infinite-scroll> -->
 
 </ion-content>

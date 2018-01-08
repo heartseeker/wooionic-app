@@ -1,5 +1,6 @@
+import { ProductsInCategoryPage } from './../products-in-category/products-in-category';
 import { HerokuApiProvider } from './../../providers/heroku-api/heroku-api';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { HomePage } from '../home/home';
 import { WoocommerceApiProvider } from '../../providers/woocommerce-api/woocommerce-api';
@@ -14,6 +15,8 @@ export class MenuPage implements OnInit{
 
   homePage;
   categories;
+
+  @ViewChild('content') nav: NavController;
 
   constructor(
     public navCtrl: NavController, 
@@ -43,11 +46,11 @@ export class MenuPage implements OnInit{
             break;
 
           case 'featured':
-            categories[index]['icon'] = 'md-camera';
+            categories[index]['icon'] = 'ios-camera-outline';
             break;
 
           case 'cellfones':
-            categories[index]['icon'] = 'ios-phone-portrait';
+            categories[index]['icon'] = 'md-phone-portrait';
             break;
           
         }
@@ -57,9 +60,15 @@ export class MenuPage implements OnInit{
       Promise.all(promise).then(() => {
         this.categories = categories;
       });
-
-      console.log('categories', categories);
     });
+  }
+
+  goToHome() {
+    this.nav.setRoot(HomePage);
+  }
+
+  goToCategory(category) {
+    this.nav.setRoot(ProductsInCategoryPage, { category });
   }
 
   ionViewDidLoad() {

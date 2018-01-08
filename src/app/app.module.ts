@@ -1,4 +1,5 @@
-import { StriphtmlPipe } from './../pipes/striphtml/striphtml';
+import { ComponentsModule } from './../components/components.module';
+import { ProductsInCategoryPage } from './../pages/products-in-category/products-in-category';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
@@ -15,25 +16,29 @@ import { WoocommerceApiProvider } from '../providers/woocommerce-api/woocommerce
 import { HerokuApiProvider } from '../providers/heroku-api/heroku-api';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
+import { MainPipeModule } from './main-pipe.module';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     MenuPage,
-    StriphtmlPipe
+    ProductsInCategoryPage,
   ],
   imports: [
     BrowserModule,
     HttpModule,
     HttpClientModule,
-    IonicModule.forRoot(MyApp)
+    MainPipeModule,
+    IonicModule.forRoot(MyApp),
+    ComponentsModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     HomePage,
-    MenuPage
+    MenuPage,
+    ProductsInCategoryPage
   ],
   providers: [
     StatusBar,
