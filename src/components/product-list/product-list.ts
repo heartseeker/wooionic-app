@@ -1,5 +1,5 @@
 import { ProductDetailPage } from './../../pages/product-detail/product-detail';
-import { ToastController, NavController } from 'ionic-angular';
+import { ToastController, NavController, ModalController } from 'ionic-angular';
 import { Component, Input } from '@angular/core';
 import { HerokuApiProvider } from '../../providers/heroku-api/heroku-api';
 
@@ -18,7 +18,7 @@ export class ProductListComponent {
   constructor(
     private heroku: HerokuApiProvider,
     private toastCtrl: ToastController,
-    private navCtrl: NavController
+    private navCtrl: NavController,
   ) {
   }
 
@@ -50,5 +50,6 @@ export class ProductListComponent {
   goToProductDetail(product) {
     this.navCtrl.push(ProductDetailPage, { product });
   }
+  
 
 }

@@ -25,8 +25,6 @@ export class ProductsInCategoryPage implements OnInit {
     //============================================================
     this.heroku.get('products?category=' + this.category.id).subscribe(products => {
       this.products = products;
-      console.log('this.products', this.products);
-      console.log('category', this.category);
     });
     
   }

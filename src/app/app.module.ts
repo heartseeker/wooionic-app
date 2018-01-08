@@ -18,6 +18,7 @@ import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import { MainPipeModule } from './main-pipe.module';
 import { ProductDetailPage } from '../pages/product-detail/product-detail';
+import { CartPage } from '../pages/cart/cart';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { ProductDetailPage } from '../pages/product-detail/product-detail';
     HomePage,
     MenuPage,
     ProductsInCategoryPage,
-    ProductDetailPage
+    ProductDetailPage,
+    CartPage
   ],
   imports: [
     BrowserModule,
@@ -42,7 +44,8 @@ import { ProductDetailPage } from '../pages/product-detail/product-detail';
     HomePage,
     MenuPage,
     ProductsInCategoryPage,
-    ProductDetailPage
+    ProductDetailPage,
+    CartPage
   ],
   providers: [
     StatusBar,
