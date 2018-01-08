@@ -1,5 +1,5 @@
 <ion-list *ngIf="products.length > 0">
-  <ion-item *ngFor="let product of products" text-wrap>
+  <ion-item *ngFor="let product of products" (click)="goToProductDetail(product)" text-wrap>
     <ion-thumbnail item-left>
       <img [src]="product.images[0].src">
     </ion-thumbnail>

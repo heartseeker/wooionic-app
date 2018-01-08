@@ -1,4 +1,5 @@
-import { ToastController } from 'ionic-angular';
+import { ProductDetailPage } from './../../pages/product-detail/product-detail';
+import { ToastController, NavController } from 'ionic-angular';
 import { Component, Input } from '@angular/core';
 import { HerokuApiProvider } from '../../providers/heroku-api/heroku-api';
 
@@ -10,12 +11,14 @@ import { HerokuApiProvider } from '../../providers/heroku-api/heroku-api';
 export class ProductListComponent {
 
   @Input('products') products;
+  @Input('category') category = null;
 
   page: number = 1;
 
   constructor(
     private heroku: HerokuApiProvider,
     private toastCtrl: ToastController,
+    private navCtrl: NavController
   ) {
   }
 
@@ -24,9 +27,15 @@ export class ProductListComponent {
       this.page++;
     }
 
+    let url = 'products?page=' + this.page;
+
+    if(this.category !== null) {
+        url = 'products?category=' + this.category.id + '&page=' + this.page;
+    }
+
     // heroku api
     //============================================================
-    this.heroku.get('products?page=' + this.page).subscribe(products => {
+    this.heroku.get(url).subscribe(products => {
       this.products = this.products.concat(products);
       if (products.length < 10) {
             event.enable(false);
@@ -36,8 +45,10 @@ export class ProductListComponent {
             }).present();
           }
     });
+  }
 
-
+  goToProductDetail(product) {
+    this.navCtrl.push(ProductDetailPage, { product });
   }
 
 }

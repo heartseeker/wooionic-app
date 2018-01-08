@@ -52,6 +52,10 @@ export class MenuPage implements OnInit{
           case 'cellfones':
             categories[index]['icon'] = 'md-phone-portrait';
             break;
+            
+          case 'clothing':
+            categories[index]['icon'] = 'ios-shirt-outline';
+            break;
           
         }
 

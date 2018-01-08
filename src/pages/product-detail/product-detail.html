@@ -1,0 +1,50 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{ product.name }}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+  <ion-card padding>
+    <ion-slides loop="true" autoplay="3000" pager>
+      <ion-slide *ngFor="let image of product.images">
+        <img [src]="image.src">
+      </ion-slide>
+    </ion-slides>
+
+    <ion-card-content>
+      <ion-card-title>
+        {{ product.name }} <br/>
+        <ion-chip *ngFor="let cat of product.categories">
+          <ion-label>{{ cat.name }}</ion-label>
+        </ion-chip>
+      </ion-card-title>
+    </ion-card-content>
+
+    <p>
+      {{ product.description | striphtml }}
+    </p>
+
+    <button ion-button icon-left block outline>
+      <ion-icon name="basket"></ion-icon> Add to Cart
+    </button>
+
+  </ion-card>
+
+  <ion-card padding *ngIf="product.attributes.length > 0">
+    <ion-card-title> Specification </ion-card-title>
+    <ion-grid>
+      <ion-row *ngFor="let attr of product.attributes">
+        <ion-col col-4> {{ attr.name }} </ion-col>
+        <ion-col col-8>
+          <span *ngFor="let option of attr.options"> {{ option }} </span>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+
+</ion-content>

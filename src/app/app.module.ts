@@ -17,6 +17,8 @@ import { HerokuApiProvider } from '../providers/heroku-api/heroku-api';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import { MainPipeModule } from './main-pipe.module';
+import { ProductDetailPage } from '../pages/product-detail/product-detail';
+
 
 @NgModule({
   declarations: [
@@ -24,6 +26,7 @@ import { MainPipeModule } from './main-pipe.module';
     HomePage,
     MenuPage,
     ProductsInCategoryPage,
+    ProductDetailPage
   ],
   imports: [
     BrowserModule,
@@ -38,7 +41,8 @@ import { MainPipeModule } from './main-pipe.module';
     MyApp,
     HomePage,
     MenuPage,
-    ProductsInCategoryPage
+    ProductsInCategoryPage,
+    ProductDetailPage
   ],
   providers: [
     StatusBar,

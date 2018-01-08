@@ -11,6 +11,8 @@ import { MainPipeModule } from '../app/main-pipe.module';
 		IonicModule,
 		MainPipeModule
 	],
-	exports: [ProductListComponent]
+	exports: [
+		ProductListComponent,
+    ]
 })
 export class ComponentsModule {}
