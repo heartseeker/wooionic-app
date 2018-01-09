@@ -7,15 +7,22 @@
       </button>
     </ion-buttons>
 
+    <ion-title>Home</ion-title>
+
     <ion-buttons end>
-      <button ion-button>
+      <button ion-button (click)="openCart()">
         <ion-icon class="cart-icon" name="cart"></ion-icon>
         <ion-badge color="danger">{{ cartQty }}</ion-badge>
       </button>
     </ion-buttons>
 
-    <ion-title>Home</ion-title>
+    
   </ion-navbar>
+
+  <ion-toolbar>
+    <ion-searchbar #search="ngModel" ngModel name="search" (search)="onSearch(search)"></ion-searchbar>
+  </ion-toolbar>
+
 </ion-header>
 
 <ion-content padding>

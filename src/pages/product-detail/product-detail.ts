@@ -4,6 +4,7 @@ import { HerokuApiProvider } from '../../providers/heroku-api/heroku-api';
 import { CartPage } from '../cart/cart';
 import { Storage } from '@ionic/storage';
 import { StorageProvider } from '../../providers/storage/storage';
+import { ToastController } from 'ionic-angular/components/toast/toast-controller';
 
 
 @IonicPage()
@@ -25,7 +26,8 @@ export class ProductDetailPage implements OnInit{
     public modalCtrl: ModalController,
     public viewCtrl: ViewController,
     public storage: Storage,
-    public storageProvider: StorageProvider
+    public storageProvider: StorageProvider,
+    public toastCtrl: ToastController
   ) {
   }
 
@@ -111,6 +113,10 @@ export class ProductDetailPage implements OnInit{
         this.storageProvider.getCartQty().subscribe(qty => {
           this.cartQty = qty;
         });
+        this.toastCtrl.create({
+          message: '1 Product added to cart',
+          duration: 1000
+        }).present();
       });
 
       

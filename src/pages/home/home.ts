@@ -6,6 +6,8 @@ import { ProductDetailPage } from '../product-detail/product-detail';
 import { ModalController } from 'ionic-angular/components/modal/modal-controller';
 import { CartPage } from '../cart/cart';
 import { StorageProvider } from '../../providers/storage/storage';
+import { SearchPage } from '../search/search';
+
 
 
 @Component({
@@ -104,12 +106,24 @@ export class HomePage implements OnInit{
 
   }
 
+  onSearch(search) {
+    this.navCtrl.push(SearchPage, { search });
+  }
+
   goToProductDetail(product) {
     this.navCtrl.push(ProductDetailPage, { product });
   }
 
   openCart() {
-    this.modalCtrl.create(CartPage).present();
+    const modal = this.modalCtrl.create(CartPage);
+    modal.present();
+    modal.onDidDismiss(() => {
+      // update number in cart
+      this.storageProvider.getCartQty().subscribe(qty => {
+        this.cartQty = qty;
+      });
+    });
   }
+  
 
 }

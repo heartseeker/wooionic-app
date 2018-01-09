@@ -15,13 +15,14 @@ export class StorageProvider  {
     public http: HttpClient,
     public storage: Storage
   ) {
-    this.storage.get('cart').then((data) => {
-      this.cart = data;
-    });
   }
 
-  getCart() {
-    return this.cart;
+  getCart(): Observable<any> {
+    const subject = new Subject<any>();
+    this.storage.get('cart').then((data) => {
+      subject.next(data);
+    });
+    return subject.asObservable();
   }
 
   getCartQty<T>(): Observable<any> {
@@ -35,6 +36,24 @@ export class StorageProvider  {
       
       Promise.all(p).then(() => {
         subject.next(qty);
+      });
+      
+    });
+
+    return subject.asObservable();
+  }
+
+  getGrandTotal<T>(): Observable<any> {
+    const subject = new Subject<any>();
+    let totalAmount = 0;
+    this.storage.get('cart').then((data) => {
+
+      const p = data.map(product => {
+        totalAmount += product.amount
+      });
+      
+      Promise.all(p).then(() => {
+        subject.next(totalAmount);
       });
       
     });
