@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-navbar>
+      <ion-buttons left>
+        <button ion-button menuToggle>
+          <ion-icon name="menu"></ion-icon>
+        </button>
+      </ion-buttons>
+        
+      <ion-title>Login</ion-title>
+  
+      <ion-buttons right>
+        <button ion-button (click)="openCart()">
+          <ion-icon class="cart-icon" name="cart"></ion-icon>
+          <ion-badge color="danger">{{ cartQty }}</ion-badge>
+        </button>
+      </ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+
+  <form #loginForm="ngForm" (ngSubmit)="login(loginForm)" autocomplete="off">
+    <ion-row>
+      <ion-col>
+        <ion-list inset>
+          <ion-item>
+            <ion-input placeholder="Username" name="username" type="text" required ngModel #email="ngModel"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input placeholder="Password" name="password" type="password" required ngModel #password="ngModel"></ion-input>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <div *ngIf="error" class="alert alert-danger">{{error}}</div>
+        <button ion-button class="submit-btn" full type="submit" [disabled]="!loginForm.form.valid">Login
+        </button>
+      </ion-col>
+    </ion-row>
+  </form>
+
+</ion-content>

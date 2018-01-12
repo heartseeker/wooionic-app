@@ -69,7 +69,13 @@ export class ProductDetailPage implements OnInit{
   }
 
   openCart() {
-    this.modalCtrl.create(CartPage).present();
+    const modal = this.modalCtrl.create(CartPage);
+    modal.present();
+    modal.onDidDismiss(() => {
+      this.storageProvider.getCartQty().subscribe(qty => {
+        this.cartQty = qty;
+      });
+    }); 
   }
 
   addToCart(product) {
@@ -79,7 +85,6 @@ export class ProductDetailPage implements OnInit{
 
       // check if cart is empty
       if(data === null || data.length === 0) {
-        console.log('brand new');
         data = [];
         data.push({
           product: product,
@@ -87,7 +92,6 @@ export class ProductDetailPage implements OnInit{
           amount: +product.price
         });
       } else {
-        console.log('update');
         // find the same product
         const promises = data.map((p, index) => {
           if (p.product.id === product.id) {

@@ -11,10 +11,29 @@
         <ion-icon name="md-home" item-left large></ion-icon>
         <h2>Home</h2>
       </ion-item>
+      <ion-item (click)="goToLogin()" *ngIf="isLogin == false" menuClose >
+        <h2>Login</h2>
+      </ion-item>
+      <ion-item (click)="goToSignUp()" *ngIf="isLogin == false" menuClose >
+        {{ isLogin }}
+        <h2>Sign up</h2>
+      </ion-item>
+      <ion-item *ngIf="isLogin">
+        <ion-avatar item-start>
+          <img src="assets/imgs/avatar-ts-woody.png">
+        </ion-avatar>
+        <h2>{{ user.nickname }}</h2>
+        <p>Welcome</p>
+      </ion-item>
       <ion-item *ngFor="let category of categories" (click)="goToCategory(category)" menuClose>
         <ion-icon *ngIf="category.icon" [name]="category.icon" item-left large></ion-icon>
         <h2>{{ category.name }}</h2>
         <p>{{ category.description }}</p>
+      </ion-item>
+
+      <ion-item *ngIf="isLogin" (click)="onLogOut()" menuClose>
+        <ion-icon name="ios-arrow-round-back-outline" item-left large></ion-icon>
+        <h2>Logout</h2>
       </ion-item>
     </ion-list>
   </ion-content>

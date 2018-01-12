@@ -1,7 +1,8 @@
 import { HerokuApiProvider } from './../../providers/heroku-api/heroku-api';
 import { Component, OnInit } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { StorageProvider } from '../../providers/storage/storage';
+import { CartPage } from '../cart/cart';
 
 
 @IonicPage()
@@ -20,7 +21,8 @@ export class ProductsInCategoryPage implements OnInit {
     public navCtrl: NavController, 
     public navParams: NavParams,
     public heroku: HerokuApiProvider,
-    public storageProvider: StorageProvider
+    public storageProvider: StorageProvider,
+    public modalCtrl: ModalController
   ) {
   }
 
@@ -42,6 +44,17 @@ export class ProductsInCategoryPage implements OnInit {
       this.cartQty = qty;
     });
     
+  }
+
+  openCart() {
+    const modal = this.modalCtrl.create(CartPage);
+    modal.present();
+    modal.onDidDismiss(() => {
+      // update number in cart
+      this.storageProvider.getCartQty().subscribe(qty => {
+        this.cartQty = qty;
+      });
+    });
   }
 
 }

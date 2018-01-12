@@ -1,7 +1,7 @@
 <ion-header>
   <ion-navbar>
     
-    <ion-buttons start>
+    <ion-buttons left>
       <button ion-button menuToggle>
         <ion-icon name="menu"></ion-icon>
       </button>
@@ -9,7 +9,7 @@
 
     <ion-title>Home</ion-title>
 
-    <ion-buttons end>
+    <ion-buttons right>
       <button ion-button (click)="openCart()">
         <ion-icon class="cart-icon" name="cart"></ion-icon>
         <ion-badge color="danger">{{ cartQty }}</ion-badge>
@@ -19,9 +19,7 @@
     
   </ion-navbar>
 
-  <ion-toolbar>
-    <ion-searchbar #search="ngModel" ngModel name="search" (search)="onSearch(search)"></ion-searchbar>
-  </ion-toolbar>
+  <searchbar></searchbar>
 
 </ion-header>
 

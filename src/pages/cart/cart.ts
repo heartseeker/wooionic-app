@@ -13,7 +13,7 @@ import { Storage } from '@ionic/storage/dist/storage';
 export class CartPage {
 
   products = [];
-  total;
+  total = 0;
 
   constructor(
     public navCtrl: NavController, 

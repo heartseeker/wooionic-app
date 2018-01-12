@@ -17,12 +17,11 @@
         <img [src]="p.product.images[0].src">
       </ion-thumbnail>
       <h2>{{ p.product.name }}</h2>
-      <p>
-        <ion-icon color="danger" name="remove-circle" (click)="decrement(p, i)"></ion-icon>
-        {{ p.qty }}
-        <ion-icon color="primary" name="add-circle" (click)="increment(p, i)"></ion-icon>
+    
+        <ion-icon color="danger" class="product-method" name="remove-circle" (click)="decrement(p, i)"></ion-icon>
+        <span class="qty-text">{{ p.qty }}</span>
+        <ion-icon color="primary" class="product-method" name="add-circle" (click)="increment(p, i)"></ion-icon>
         qty.
-      </p>
       <span class="amounts" clear item-end>&#8369; {{ +p.amount | number }}</span>
       <!-- <button ion-button clear item-end>Remove</button> -->
     </ion-item>

@@ -2,10 +2,12 @@ import { IonicModule } from 'ionic-angular';
 import { NgModule } from '@angular/core';
 import { ProductListComponent } from './product-list/product-list';
 import { MainPipeModule } from '../app/main-pipe.module';
+import { SearchbarComponent } from './searchbar/searchbar';
 
 @NgModule({
   declarations: [
     ProductListComponent,
+    SearchbarComponent,
   ],
   imports: [
     IonicModule,
@@ -13,6 +15,7 @@ import { MainPipeModule } from '../app/main-pipe.module';
   ],
   exports: [
     ProductListComponent,
+    SearchbarComponent,
   ],
 })
 

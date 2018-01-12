@@ -1,5 +1,5 @@
 import { ProductDetailPage } from './../../pages/product-detail/product-detail';
-import { ToastController, NavController, ModalController } from 'ionic-angular';
+import { ToastController, NavController } from 'ionic-angular';
 import { Component, Input } from '@angular/core';
 import { HerokuApiProvider } from '../../providers/heroku-api/heroku-api';
 

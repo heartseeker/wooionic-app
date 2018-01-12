@@ -1,0 +1,153 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-buttons left>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+      
+    <ion-title>Signup</ion-title>
+
+    <ion-buttons right>
+      <button ion-button (click)="openCart()">
+        <ion-icon class="cart-icon" name="cart"></ion-icon>
+        <ion-badge color="danger">{{ cartQty }}</ion-badge>
+      </button>
+    </ion-buttons>
+
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list>
+    <ion-item-divider color="primary">Personal Details</ion-item-divider>
+
+    <ion-item>
+      <ion-label floating>First Name</ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Last Name</ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Email</ion-label>
+      <ion-input type="email"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Username</ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+    <ion-label floating>Password</ion-label>
+    <ion-input type="password"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Re-Password</ion-label>
+      <ion-input type="password"></ion-input>
+    </ion-item>
+
+    <ion-item-divider color="primary">Billing Details</ion-item-divider>
+
+    <ion-item>
+      <ion-label floating>Address Line 1</ion-label>
+      <ion-textarea type="text"></ion-textarea>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Address Line 2</ion-label>
+      <ion-textarea type="text"></ion-textarea>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Country</ion-label>
+      <ion-select>
+        <ion-option [value]="country.cioc" *ngFor="let country of countries$ | async">{{ country.name }}</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>State / Region</ion-label>
+      <ion-select>
+        <ion-option value="ncr" >National Capital Region</ion-option>
+        <ion-option value="armm" >ARMM</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>City</ion-label>
+      <ion-textarea type="text"></ion-textarea>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Postal Code</ion-label>
+      <ion-textarea type="text"></ion-textarea>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Phone</ion-label>
+      <ion-textarea type="tel"></ion-textarea>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Same Shipping Details</ion-label>
+      <ion-checkbox></ion-checkbox>
+    </ion-item>
+
+    <ion-item-divider color="primary" >Shipping Details</ion-item-divider>
+
+    <ion-item>
+      <ion-label floating>Address Line 1</ion-label>
+      <ion-textarea type="text"></ion-textarea>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Address Line 2</ion-label>
+      <ion-textarea type="text"></ion-textarea>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Country</ion-label>
+      <ion-select>
+        <ion-option [value]="country.cioc" *ngFor="let country of countries$ | async">{{ country.name }}</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>State / Region</ion-label>
+      <ion-select>
+        <ion-option value="ncr" >National Capital Region</ion-option>
+        <ion-option value="armm" >ARMM</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>City</ion-label>
+      <ion-textarea type="text"></ion-textarea>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Postal Code</ion-label>
+      <ion-textarea type="text"></ion-textarea>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Phone</ion-label>
+      <ion-textarea type="tel"></ion-textarea>
+    </ion-item>
+  
+
+  </ion-list>
+
+  <div padding>
+    <button ion-button block (click)="signUp()">Sign Up</button>
+  </div>
+</ion-content>

@@ -1,12 +1,12 @@
 import { HerokuApiProvider } from './../../providers/heroku-api/heroku-api';
 import { Component, OnInit } from '@angular/core';
 import { NavController, ToastController } from 'ionic-angular';
-import { WoocommerceApiProvider } from '../../providers/woocommerce-api/woocommerce-api';
 import { ProductDetailPage } from '../product-detail/product-detail';
 import { ModalController } from 'ionic-angular/components/modal/modal-controller';
 import { CartPage } from '../cart/cart';
 import { StorageProvider } from '../../providers/storage/storage';
 import { SearchPage } from '../search/search';
+import { LoadingController } from 'ionic-angular/components/loading/loading-controller';
 
 
 
@@ -28,11 +28,11 @@ export class HomePage implements OnInit{
   
   constructor(
     private navCtrl: NavController,
-    private http: WoocommerceApiProvider,
     private toastCtrl: ToastController,
     private heroku: HerokuApiProvider,
     private modalCtrl: ModalController,
-    private storageProvider: StorageProvider
+    private storageProvider: StorageProvider,
+    private loadingCtrl: LoadingController
   ) {}
 
   ionViewWillEnter() {
@@ -55,6 +55,12 @@ export class HomePage implements OnInit{
     //   this.foneProducts = products;
     // });
 
+    const loader = this.loadingCtrl.create({
+      content: "Please wait...",
+    });
+
+    loader.present();
+
     // all products
     this.loadProducts(null);
 
@@ -65,6 +71,7 @@ export class HomePage implements OnInit{
 
     this.heroku.get('products?category=16').subscribe(products => {
       this.foneProducts = products;
+      loader.dismiss();
     });
 
     this.storageProvider.getCartQty().subscribe(qty => {

@@ -1,3 +1,5 @@
+import { LoginPage } from './../pages/login/login';
+import { SignupPage } from './../pages/signup/signup';
 import { SearchPage } from './../pages/search/search';
 import { ComponentsModule } from './../components/components.module';
 import { ProductsInCategoryPage } from './../pages/products-in-category/products-in-category';
@@ -24,6 +26,7 @@ import { IonicStorageModule } from '@ionic/storage';
 import { StorageProvider } from '../providers/storage/storage';
 
 
+
 @NgModule({
   declarations: [
     MyApp,
@@ -32,7 +35,9 @@ import { StorageProvider } from '../providers/storage/storage';
     ProductsInCategoryPage,
     ProductDetailPage,
     CartPage,
-    SearchPage
+    SearchPage,
+    SignupPage,
+    LoginPage
   ],
   imports: [
     BrowserModule,
@@ -51,7 +56,9 @@ import { StorageProvider } from '../providers/storage/storage';
     ProductsInCategoryPage,
     ProductDetailPage,
     CartPage,
-    SearchPage
+    SearchPage,
+    SignupPage,
+    LoginPage
   ],
   providers: [
     StatusBar,

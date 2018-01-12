@@ -1,21 +1,23 @@
 <ion-header>
   <ion-navbar>
     
-    <ion-buttons start>
+    <ion-buttons left>
       <button ion-button menuToggle>
         <ion-icon name="menu"></ion-icon>
       </button>
     </ion-buttons>
     
-    <ion-buttons end>
-      <button ion-button menuToggle>
-        <ion-icon name="cart"></ion-icon>
+    <ion-buttons right>
+      <button ion-button (click)="openCart()">
+        <ion-icon name="cart"></ion-icon> &nbsp;
         <ion-badge color="danger">{{ cartQty }}</ion-badge>
       </button>
     </ion-buttons>
 
     <ion-title>{{ category.name }}</ion-title>
   </ion-navbar>
+
+  <searchbar></searchbar>
 
 </ion-header>
 
