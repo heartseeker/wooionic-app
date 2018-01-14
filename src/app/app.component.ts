@@ -10,6 +10,7 @@ import { ProductsInCategoryPage } from '../pages/products-in-category/products-i
 import { LoginPage } from '../pages/login/login';
 import { AuthProvider } from '../providers/auth/auth';
 import { Storage } from '@ionic/storage/dist/storage';
+import { OrdersPage } from './../pages/orders/orders';
 
 
 
@@ -48,6 +49,7 @@ export class MyApp implements OnInit{
   @ViewChild(Nav) nav: Nav;
 
   rootPage: any = HomePage;
+  ordersPage = OrdersPage;
   categories = [];
   login = LoginPage;
   user: UserInterface = {

@@ -50,6 +50,10 @@
                     <h2>{{ user?.nickname }}</h2>
                     <p>Welcome</p>
                 </ion-item>
+                <ion-item (click)="openPage(ordersPage)" menuClose>
+                    <ion-icon name="ios-paper-outline" item-left large></ion-icon>
+                    <h2>My Orders</h2>
+                </ion-item>
                 <ion-item *ngFor="let category of categories" (click)="openCategory(category)" menuClose>
                     <ion-icon *ngIf="category.icon" [name]="category.icon" item-left large></ion-icon>
                     <h2>{{ category.name }}</h2>
@@ -57,7 +61,7 @@
                 </ion-item>
                 
                 <ion-item (click)="onLogOut()" menuClose>
-                    <ion-icon name="ios-arrow-round-back-outline" item-left large></ion-icon>
+                    <ion-icon name="log-out" item-left large></ion-icon>
                     <h2>Logout</h2>
                 </ion-item>
             </ion-list>

@@ -1,0 +1,29 @@
+<ion-header>
+
+  <ion-navbar>
+  
+    <ion-buttons left>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+
+    <ion-title>Orders</ion-title>
+
+    <ion-buttons right>
+      <button ion-button (click)="openCart()">
+        <ion-icon class="cart-icon" name="cart"></ion-icon>
+        <ion-badge color="danger">{{ cartQty }}</ion-badge>
+      </button>
+    </ion-buttons>
+      
+  </ion-navbar>
+  
+  <searchbar></searchbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+</ion-content>
