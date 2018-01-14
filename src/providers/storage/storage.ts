@@ -72,16 +72,6 @@ export class StorageProvider  {
     return subject.asObservable();
   }
 
-  getUser(): Observable<any> {
-    const subject = new Subject<any>();
-    this.storage.get('auth').then((data) => {
-      if(data !== null) {
-        subject.next(data);
-      }
-    });
-    return subject.asObservable();
-  }
-
   isLogin(): Observable<any> {
     const subject = new Subject<any>();
     this.storage.ready().then(() => {
@@ -96,6 +86,12 @@ export class StorageProvider  {
     });
     return subject.asObservable();
   }
+
+  hasLoggedIn(): Promise<boolean> {
+    return this.storage.get('auth').then((value) => {
+      return value === true;
+    });
+  };
 
 
 }

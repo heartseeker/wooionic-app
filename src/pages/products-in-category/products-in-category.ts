@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { StorageProvider } from '../../providers/storage/storage';
 import { CartPage } from '../cart/cart';
+import { LoadingController } from 'ionic-angular/components/loading/loading-controller';
 
 
 @IonicPage()
@@ -22,7 +23,8 @@ export class ProductsInCategoryPage implements OnInit {
     public navParams: NavParams,
     public heroku: HerokuApiProvider,
     public storageProvider: StorageProvider,
-    public modalCtrl: ModalController
+    public modalCtrl: ModalController,
+    public loadingCtrl: LoadingController
   ) {
   }
 
@@ -34,10 +36,17 @@ export class ProductsInCategoryPage implements OnInit {
 
   ngOnInit() {
     this.category = this.navParams.get('category');
+
+    const loader = this.loadingCtrl.create({
+      content: "Please wait...",
+    });
+
+    loader.present();
     // heroku api
     //============================================================
     this.heroku.get('products?category=' + this.category.id).subscribe(products => {
       this.products = products;
+      loader.dismiss();
     });
 
     this.storageProvider.getCartQty().subscribe(qty => {

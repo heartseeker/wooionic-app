@@ -1,15 +1,14 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { StorageProvider } from '../../providers/storage/storage';
 import { Http, RequestOptions, Headers } from '@angular/http';
 import { Storage } from '@ionic/storage/dist/storage';
 import { AlertController } from 'ionic-angular/components/alert/alert-controller';
 import { LoadingController } from 'ionic-angular/components/loading/loading-controller';
 import { HomePage } from '../home/home';
-import { MenuPage } from '../menu/menu';
+import { AuthProvider } from '../../providers/auth/auth';
 
 
-@IonicPage()
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html',
@@ -25,7 +24,8 @@ export class LoginPage {
     public http: Http,
     public storage: Storage,
     public alertCtrl: AlertController,
-    public loadingCtrl: LoadingController
+    public loadingCtrl: LoadingController,
+    public auth: AuthProvider
   ) {
   }
 
@@ -71,7 +71,7 @@ export class LoginPage {
         
         // if successfully login
         //=====================================================
-        this.storage.set('auth', { user: response.user});
+        this.auth.login(response.user);
         const alert = this.alertCtrl.create({
           title: 'Login Successful',
           subTitle: response.error,

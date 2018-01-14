@@ -1,1 +1,70 @@
-<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>
+<ion-split-pane>
+
+    <ion-menu id="loggedOutMenu" [content]="content">
+        <ion-header>
+            <ion-toolbar>
+                <ion-title>Menu</ion-title>
+            </ion-toolbar>
+        </ion-header>
+        
+        <ion-content>
+            <ion-list>
+                <ion-item (click)="openPage(rootPage)" menuClose>
+                    <ion-icon name="md-home" item-left large></ion-icon>
+                    <h2>Home</h2>
+                </ion-item>
+                <ion-item (click)="openPage(login)" *ngIf="!isLogin" menuClose >
+                    <ion-icon name="log-in" item-left large></ion-icon>
+                    <h2>Login</h2>
+                </ion-item>
+                <ion-item (click)="goToSignUp()" *ngIf="!isLogin" menuClose >
+                    <ion-icon name="person-add" item-left large></ion-icon>
+                    <h2>Sign up</h2>
+                </ion-item>
+                <ion-item *ngFor="let category of categories" (click)="openCategory(category.component)" menuClose>
+                    <ion-icon *ngIf="category.icon" [name]="category.icon" item-left large></ion-icon>
+                    <h2>{{ category.name }}</h2>
+                    <p>{{ category.description }}</p>
+                </ion-item>
+            </ion-list>
+        </ion-content>
+    </ion-menu>
+    
+    <ion-menu id="loggedInMenu" [content]="content">
+        <ion-header>
+            <ion-toolbar>
+                <ion-title>Menu</ion-title>
+            </ion-toolbar>
+        </ion-header>
+        
+        <ion-content>
+            <ion-list>
+                <ion-item (click)="openPage(rootPage)" menuClose>
+                    <ion-icon name="md-home" item-left large></ion-icon>
+                    <h2>Home</h2>
+                </ion-item>
+                <ion-item>
+                    <ion-avatar item-start>
+                        <img src="assets/imgs/avatar-ts-woody.png">
+                    </ion-avatar>
+                    <h2>{{ user?.nickname }}</h2>
+                    <p>Welcome</p>
+                </ion-item>
+                <ion-item *ngFor="let category of categories" (click)="openCategory(category)" menuClose>
+                    <ion-icon *ngIf="category.icon" [name]="category.icon" item-left large></ion-icon>
+                    <h2>{{ category.name }}</h2>
+                    <p>{{ category.description }}</p>
+                </ion-item>
+                
+                <ion-item (click)="onLogOut()" menuClose>
+                    <ion-icon name="ios-arrow-round-back-outline" item-left large></ion-icon>
+                    <h2>Logout</h2>
+                </ion-item>
+            </ion-list>
+        </ion-content>
+    </ion-menu>
+    
+    <!-- main navigation -->
+    <ion-nav [root]="rootPage" #content swipeBackEnabled="false" main name="app"></ion-nav>
+
+</ion-split-pane>

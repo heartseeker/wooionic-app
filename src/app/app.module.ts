@@ -10,7 +10,6 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { MenuPage } from '../pages/menu/menu';
 
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -24,6 +23,7 @@ import { ProductDetailPage } from '../pages/product-detail/product-detail';
 import { CartPage } from '../pages/cart/cart';
 import { IonicStorageModule } from '@ionic/storage';
 import { StorageProvider } from '../providers/storage/storage';
+import { AuthProvider } from '../providers/auth/auth';
 
 
 
@@ -31,7 +31,6 @@ import { StorageProvider } from '../providers/storage/storage';
   declarations: [
     MyApp,
     HomePage,
-    MenuPage,
     ProductsInCategoryPage,
     ProductDetailPage,
     CartPage,
@@ -52,7 +51,6 @@ import { StorageProvider } from '../providers/storage/storage';
   entryComponents: [
     MyApp,
     HomePage,
-    MenuPage,
     ProductsInCategoryPage,
     ProductDetailPage,
     CartPage,
@@ -66,7 +64,8 @@ import { StorageProvider } from '../providers/storage/storage';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     WoocommerceApiProvider,
     HerokuApiProvider,
-    StorageProvider
+    StorageProvider,
+    AuthProvider
   ]
 })
 export class AppModule {}
