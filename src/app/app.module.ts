@@ -25,6 +25,7 @@ import { IonicStorageModule } from '@ionic/storage';
 import { StorageProvider } from '../providers/storage/storage';
 import { AuthProvider } from '../providers/auth/auth';
 import { OrdersPage } from '../pages/orders/orders';
+import { CheckoutPage } from '../pages/checkout/checkout';
 
 
 
@@ -38,7 +39,8 @@ import { OrdersPage } from '../pages/orders/orders';
     SearchPage,
     SignupPage,
     LoginPage,
-    OrdersPage
+    OrdersPage,
+    CheckoutPage
   ],
   imports: [
     BrowserModule,
@@ -59,7 +61,8 @@ import { OrdersPage } from '../pages/orders/orders';
     SearchPage,
     SignupPage,
     LoginPage,
-    OrdersPage
+    OrdersPage,
+    CheckoutPage
   ],
   providers: [
     StatusBar,

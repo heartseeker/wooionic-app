@@ -3,6 +3,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { StorageProvider } from '../../providers/storage/storage';
 import { ViewController } from 'ionic-angular/navigation/view-controller';
 import { Storage } from '@ionic/storage/dist/storage';
+import { CheckoutPage } from './../checkout/checkout';
+
 
 
 @IonicPage()
@@ -82,6 +84,10 @@ export class CartPage {
 
     });
 
+  }
+
+  onCheckout() {
+    this.navCtrl.push(CheckoutPage);
   }
 
 }
