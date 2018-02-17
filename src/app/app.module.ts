@@ -26,6 +26,7 @@ import { StorageProvider } from '../providers/storage/storage';
 import { AuthProvider } from '../providers/auth/auth';
 import { OrdersPage } from '../pages/orders/orders';
 import { CheckoutPage } from '../pages/checkout/checkout';
+import { OrdersProductPage } from '../pages/orders-product/orders-product';
 
 
 
@@ -40,7 +41,8 @@ import { CheckoutPage } from '../pages/checkout/checkout';
     SignupPage,
     LoginPage,
     OrdersPage,
-    CheckoutPage
+    CheckoutPage,
+    OrdersProductPage
   ],
   imports: [
     BrowserModule,
@@ -62,7 +64,8 @@ import { CheckoutPage } from '../pages/checkout/checkout';
     SignupPage,
     LoginPage,
     OrdersPage,
-    CheckoutPage
+    CheckoutPage,
+    OrdersProductPage
   ],
   providers: [
     StatusBar,

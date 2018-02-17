@@ -156,6 +156,7 @@ export class MyApp implements OnInit{
       this.storage.ready().then(() => {
         this.storage.get('auth').then((data) => {
           this.user = data;
+          console.log('user', data);
         });
       });
       this.enableMenu(true);
@@ -166,7 +167,9 @@ export class MyApp implements OnInit{
     });
 
     this.events.subscribe('user:logout', () => {
-      this.enableMenu(false);
+      this.nav.setRoot(HomePage).then(() => {
+        this.enableMenu(false);
+      });
     });
   }
 
