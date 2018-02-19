@@ -7,6 +7,7 @@ import { AlertController } from 'ionic-angular/components/alert/alert-controller
 import { LoadingController } from 'ionic-angular/components/loading/loading-controller';
 import { HomePage } from '../home/home';
 import { AuthProvider } from '../../providers/auth/auth';
+import { HerokuApiProvider } from '../../providers/heroku-api/heroku-api';
 
 
 @Component({
@@ -25,7 +26,8 @@ export class LoginPage {
     public storage: Storage,
     public alertCtrl: AlertController,
     public loadingCtrl: LoadingController,
-    public auth: AuthProvider
+    public auth: AuthProvider,
+    private heroku: HerokuApiProvider,
   ) {
   }
 
@@ -51,44 +53,44 @@ export class LoginPage {
     });
 
     loader.present();
-    const options = new RequestOptions({ headers: headers });
-    this.http.get(`http://api.ionicwoo.com/api/auth/generate_auth_cookie/?insecure=cool&username=${username}&password=${password}`, options)
-      .map(res => res.json())
-      .subscribe(response => {
-        loader.dismiss();
-        
-        // if error login
-        //====================================================
-        if (response.status === 'error') {
-          const alert = this.alertCtrl.create({
-            title: 'Login Error',
-            subTitle: response.error,
-            buttons: ['OK']
-          });
-          alert.present();
-          return;
-        } 
-        
-        // if successfully login
-        //=====================================================
-        this.auth.login(response.user);
-        const alert = this.alertCtrl.create({
-          title: 'Login Successful',
-          subTitle: response.error,
-          buttons: [{
-            text: 'OK',
-            handler: () => {
-              if (this.navParams.get('next')) {
-                this.navCtrl.push(this.navParams.get('next'));
-              } else {
-                this.navCtrl.setRoot(HomePage);
-              }
-            }
-          }],
-        });
 
+    const body = { username, password };
+
+    this.heroku.post('auth', body).subscribe(response => {
+      loader.dismiss();
+        
+      // if error login
+      //====================================================
+      if (response.status === 'error') {
+        const alert = this.alertCtrl.create({
+          title: 'Login Error',
+          subTitle: response.error,
+          buttons: ['OK']
+        });
         alert.present();
+        return;
+      } 
+      
+      // if successfully login
+      //=====================================================
+      this.auth.login(response.user);
+      const alert = this.alertCtrl.create({
+        title: 'Login Successful',
+        subTitle: response.error,
+        buttons: [{
+          text: 'OK',
+          handler: () => {
+            if (this.navParams.get('next')) {
+              this.navCtrl.push(this.navParams.get('next'));
+            } else {
+              this.navCtrl.setRoot(HomePage);
+            }
+          }
+        }],
       });
+
+      alert.present();
+    });
 
   }
 

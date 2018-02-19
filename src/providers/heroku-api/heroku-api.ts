@@ -26,4 +26,13 @@ export class HerokuApiProvider {
     return this.http.get(environment.heroku.url + url, options).map(res => res.json());
   }
 
+  post(url: string, body) {
+    const headers = new Headers({ 
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*'
+    });
+    const options = new RequestOptions({ headers: headers });
+    return this.http.post(environment.heroku.url + url, body, options).map(res => res.json());
+  }
+
 }
