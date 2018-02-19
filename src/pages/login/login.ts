@@ -52,7 +52,7 @@ export class LoginPage {
 
     loader.present();
     const options = new RequestOptions({ headers: headers });
-    this.http.get(`/api/auth/generate_auth_cookie/?insecure=cool&username=${username}&password=${password}`, options)
+    this.http.get(`http://api.ionicwoo.com/api/auth/generate_auth_cookie/?insecure=cool&username=${username}&password=${password}`, options)
       .map(res => res.json())
       .subscribe(response => {
         loader.dismiss();
