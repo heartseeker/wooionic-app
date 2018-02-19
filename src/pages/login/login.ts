@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { StorageProvider } from '../../providers/storage/storage';
-import { Http, RequestOptions, Headers } from '@angular/http';
+import { Http } from '@angular/http';
 import { Storage } from '@ionic/storage/dist/storage';
 import { AlertController } from 'ionic-angular/components/alert/alert-controller';
 import { LoadingController } from 'ionic-angular/components/loading/loading-controller';
@@ -42,12 +42,6 @@ export class LoginPage {
     const username = form.value.username;
     const password = form.value.password;
 
-    const headers = new Headers({ 
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*'
-    });
-
-    
     const loader = this.loadingCtrl.create({
       content: "Please wait...",
     });
