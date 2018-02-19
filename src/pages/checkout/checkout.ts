@@ -1,6 +1,6 @@
 import { AlertController } from 'ionic-angular/components/alert/alert-controller';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController, Events, MenuController, App } from 'ionic-angular';
 import { Http } from '@angular/http';
 import { Storage } from '@ionic/storage';
 import { HerokuApiProvider } from '../../providers/heroku-api/heroku-api';
@@ -29,7 +29,10 @@ export class CheckoutPage {
     public storage: Storage,
     public heroku: HerokuApiProvider,
     public alertCtrl: AlertController,
-    public loadingCtrl: LoadingController
+    public loadingCtrl: LoadingController,
+    public events: Events,
+    public menu: MenuController,
+    public app: App
   ) {
     this.newOrder = {};
     this.newOrder.billing = {};
@@ -124,7 +127,9 @@ export class CheckoutPage {
               text: "OK",
               handler: () => {
                   this.storage.remove('cart');
-                  this.navCtrl.setRoot(HomePage);
+                  this.navCtrl.popToRoot().then(() => {
+                    this.navCtrl.popTo(HomePage);
+                  });
                 }
               }]
           }).present();
